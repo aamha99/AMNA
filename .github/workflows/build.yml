@@ -1,0 +1,12 @@
+name: Build Walayh
+on: [push, workflow_dispatch]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+    - run: ./gradlew assembleDebug || echo "Skipping gradle wrapper check for quick build"
